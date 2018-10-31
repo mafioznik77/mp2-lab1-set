@@ -4,7 +4,7 @@
 //   Переработано для Microsoft Visual Studio 2008 Сысоевым А.В. (19.04.2015)
 // Работу над шаблонами выполнил студент группы 381706-4 Серобян Нарек.
 // Множество - реализация через битовые поля
-/*
+
 #include "tset.h"
 
 TSet::TSet(int mp) : BitField(mp), MaxPower(mp)
@@ -50,35 +50,50 @@ BitField.ClrBit(Elem);
 
 TSet& TSet::operator=(const TSet &s) // присваивание
 {
+	MaxPower=s.MaxPower;
+	BitField=s.BitField;
+	return *this;
 }
 
 int TSet::operator==(const TSet &s) const // сравнение
 {
+	if(MaxPower==s.MaxPower)
+		if(BitField==s.BitField)
+			return 1;
     return 0;
 }
 
 int TSet::operator!=(const TSet &s) const // сравнение
 {
+	if(MaxPower==s.MaxPower)
+		if(BitField==s.BitField)
+			return 0;
+    return 1;
 }
 
 TSet TSet::operator+(const TSet &s) // объединение
 {
+	return (BitField|s.BitField);
 }
 
 TSet TSet::operator+(const int Elem) // объединение с элементом
 {
+	return (BitField|Elem);
 }
 
 TSet TSet::operator-(const int Elem) // разность с элементом
 {
+	return (BitField&Elem);
 }
 
 TSet TSet::operator*(const TSet &s) // пересечение
 {
+	return (BitField&s.BitField);
 }
 
 TSet TSet::operator~(void) // дополнение
 {
+	return (~BitField);
 }
 
 // перегрузка ввода/вывода
@@ -90,5 +105,3 @@ istream &operator>>(istream &istr, TSet &s) // ввод
 ostream& operator<<(ostream &ostr, const TSet &s) // вывод
 {
 }
-
-*/

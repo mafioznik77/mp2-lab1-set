@@ -193,8 +193,12 @@ istream &operator>>(istream &istr, TBitField &bf) // ввод
 
 ostream &operator<<(ostream &ostr, const TBitField &bf) // вывод
 {
-	for (int i = 0; i < bf.GetLength(); i++)
-		ostr << bf.GetBit(i) << " ";
-	return ostr;
-
+    for(int i=0;i<bf.GetLength();i++)
+    {
+        if(bf.GetBit(i)==0)
+            ostr<<"0 ";
+        else
+            ostr<<"1 ";
+    }
+    return ostr;
 }
